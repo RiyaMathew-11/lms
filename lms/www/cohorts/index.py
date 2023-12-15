@@ -31,7 +31,7 @@ def get_cohorts(course):
 		return course.get_cohorts()
 
 	staff_roles = frappe.get_all(
-		"Cohort Staff", filters={"course": course.name}, fields=["cohort"]
+		"Cohort Staff", filters={"course": course.name, "status":["Upcoming", "Live", "Completed"]}, fields=["cohort"]
 	)
 	mentor_roles = frappe.get_all(
 		"Cohort Mentor", filters={"course": course.name}, fields=["cohort"]
